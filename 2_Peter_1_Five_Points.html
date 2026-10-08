@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#08090b">
+<title>It Is God Who Works in Us — 2 Peter 1</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root{
+  --bg:#08090b;
+  --fg:#f5f5f2;
+  --muted:#9a9ca3;
+  --yellow:#f4d90a;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{
+  margin:0;width:100%;height:100%;overflow:hidden;
+  background:var(--bg);color:var(--fg);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+body{touch-action:pan-y}
+.deck{width:100%;height:100%;position:relative}
+.slide{
+  position:absolute;inset:0;
+  padding:max(7vh,44px) max(7vw,34px) max(8vh,58px);
+  display:flex;flex-direction:column;justify-content:center;
+  opacity:0;visibility:hidden;
+  transform:translateX(4vw) scale(.985);
+  transition:opacity .38s ease,transform .5s cubic-bezier(.2,.75,.25,1);
+}
+.slide.active{opacity:1;visibility:visible;transform:none}
+.slide::before{
+  content:"";position:absolute;left:7vw;top:0;width:80px;height:5px;
+  background:var(--yellow);
+}
+.kicker{
+  font:700 clamp(12px,1.7vw,18px)/1 "Space Grotesk",sans-serif;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);
+  margin-bottom:clamp(24px,5vh,52px);
+}
+h1{
+  margin:0;max-width:1100px;
+  font:800 clamp(42px,6.2vw,92px)/.98 "Space Grotesk",Inter,sans-serif;
+  letter-spacing:-.045em;
+}
+.em{ text-decoration:underline; text-decoration-color:var(--yellow);
+      text-decoration-thickness:.09em;text-underline-offset:.12em; }
+.refs{
+  margin-top:clamp(28px,5vh,54px);
+  max-width:1050px;
+  font:600 clamp(15px,2vw,23px)/1.45 Inter,sans-serif;
+  color:var(--muted);
+}
+.refs span{color:var(--fg)}
+.footer{
+  position:absolute;left:7vw;right:7vw;bottom:30px;
+  display:flex;justify-content:space-between;align-items:center;
+  color:#5f626a;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+}
+.counter{color:#8a8c92}
+.hint{opacity:.75}
+.intro-quote{font-size:clamp(25px,3.7vw,54px);line-height:1.16;letter-spacing:-.035em;max-width:1150px}
+@media (orientation:portrait) and (max-width:600px){.intro-quote{font-size:clamp(23px,5.4vw,35px)}}
+.cover{justify-content:flex-end;padding-bottom:12vh}
+.cover h1{font-size:clamp(52px,9vw,130px);max-width:1000px}
+.cover .kicker{margin-bottom:24px}
+.cover .sub{margin-top:28px;color:var(--muted);font-size:clamp(15px,2vw,22px)}
+@media (orientation:portrait) and (max-width:600px){
+  .slide{padding-left:8vw;padding-right:8vw}
+  .slide::before{left:8vw}
+  .footer{left:8vw;right:8vw}
+  h1{font-size:clamp(38px,10.5vw,68px)}
+  .refs{font-size:15px}
+}
+
+/* Scripture slide: yellow actions, subtly highlighted italic objects */
+.scripture-slide{padding-top:6vh;padding-bottom:7vh}
+.scripture-text{font-family:Inter,system-ui,sans-serif;font-size:clamp(17px,2.45vw,34px);line-height:1.42;letter-spacing:-.025em;font-weight:600;max-width:1260px}
+.scripture-text strong{font-weight:900;color:var(--yellow);text-decoration:underline;text-decoration-thickness:.07em;text-underline-offset:.14em}
+.scripture-text em{font-style:italic;color:#fff;text-decoration:underline;text-decoration-color:rgba(244,217,10,.65);text-decoration-thickness:.055em;text-underline-offset:.14em}
+@media(max-width:650px){.scripture-text{font-size:clamp(14px,3.2vw,23px);line-height:1.34}}
+</style>
+</head>
+<body>
+<main class="deck" aria-label="Scripture and five-point presentation">
+  <section class="slide intro active">
+    <div class="kicker">1 John 4:9–10 · ONE THING</div>
+    <h1 class="intro-quote">God's love was revealed among us in this way: God sent his one and only Son into the world so that we might live through him.<br><br>Love consists in this: <span class="em">not that we loved God</span>, but that <span class="em">he loved us</span> and <span class="em">sent his Son</span> to be the atoning sacrifice for our sins.</h1>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">01 / 08</span></div>
+  </section>
+  <section class="slide cover">
+    <div class="kicker">2 Peter 1</div>
+    <h1>It Is God Who<br><span class="em">Works in Us.</span></h1>
+    <div class="sub">Five ways to strive in response to what God has already given.</div>
+    <div class="footer"><span>Men's Study · October 2026</span><span class="counter">02 / 08</span></div>
+  </section>
+
+  <section class="slide scripture-slide">
+    <div class="kicker">2 Peter 1:1–4</div>
+    <div class="scripture-text">Simeon Peter, a servant and an apostle of Jesus Christ: To those who have <strong>received</strong> a <em>faith</em> equal to ours <strong>through</strong> the <em>righteousness of our God and Savior Jesus Christ</em>.<br><br>May grace and peace be multiplied to you <strong>through</strong> the <em>knowledge of God and of Jesus our Lord</em>.<br><br>His divine power has <strong>given</strong> us <em>everything required for life and godliness</em> <strong>through</strong> the <em>knowledge of him who called us</em> by his own glory and goodness.<br><br>By these <strong>he has given</strong> us <em>very great and precious promises</em>, so that <strong>through</strong> <em>them</em> you may share in the divine nature, escaping the corruption that is in the world because of evil desire.</div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">03 / 08</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">01</div>
+    <h1>Strive to see <span class="em">EVERYTHING</span> you have as something God has <span class="em">GIVEN</span> you.</h1>
+    <div class="refs"><span>1 Chr 29:14 · Acts 17:25 · Deut 8:18 · Ps 16:2 · James 1:17 · Rom 11:36</span></div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">04 / 08</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">02</div>
+    <h1>Strive to see <span class="em">ALL THINGS</span> through the <span class="em">VIEW</span> of God.</h1>
+    <div class="refs"><span>Mark 8:29–33 · Isa 55:8–9 · Prov 3:5–6 · 2 Cor 4:17–18 · Rom 12:2</span></div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">05 / 08</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">03</div>
+    <h1>Strive to <span class="em">SUPPLEMENT</span> your <span class="em">FAITH</span> with <span class="em">CHRIST-LIKE CHARACTER.</span></h1>
+    <div class="refs"><span>Rom 1:17 · Phil 4:8 · Col 1:9–10 · Prov 16:32 · Col 5:22–23</span></div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">06 / 08</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">04</div>
+    <h1>Strive to <span class="em">LIVE</span> in a way that <span class="em">DEMONSTRATES</span> the <span class="em">REALITY</span> of your faith.</h1>
+    <div class="refs"><span>1 Sam 16:7 · Deut 8:2 · Matt 7:16–20 · 1 John 2:3–6</span></div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">07 / 08</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">05</div>
+    <h1>Strive <span class="em">NOT</span> to let what you <span class="em">KNOW</span> so well become what you <span class="em">HEAR</span> or <span class="em">READ</span> so little.</h1>
+    <div class="refs"><span>Deut 6:6–7 · Ps 78:5–7 · Phil 3:1 · 1 John 2:7</span></div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">08 / 08</span></div>
+  </section>
+</main>
+
+<script>
+(() => {
+  const slides=[...document.querySelectorAll('.slide')];
+  let index=0, startX=0, startY=0;
+
+  function show(n){
+    index=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,i)=>s.classList.toggle('active',i===index));
+  }
+  function next(){show(index+1)}
+  function prev(){show(index-1)}
+
+  window.addEventListener('keydown',e=>{
+    if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next()}
+    if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev()}
+    if(e.key==='Home'){e.preventDefault();show(0)}
+    if(e.key==='End'){e.preventDefault();show(slides.length-1)}
+  });
+
+  document.addEventListener('touchstart',e=>{
+    const t=e.changedTouches[0]; startX=t.clientX; startY=t.clientY;
+  },{passive:true});
+  document.addEventListener('touchend',e=>{
+    const t=e.changedTouches[0], dx=t.clientX-startX, dy=t.clientY-startY;
+    if(Math.abs(dx)>55 && Math.abs(dx)>Math.abs(dy)*1.2){
+      dx<0?next():prev();
+    }
+  },{passive:true});
+
+  // Tap left/right edges for iPad-friendly navigation.
+  document.addEventListener('click',e=>{
+    if(e.target.closest('a,button')) return;
+    const x=e.clientX/window.innerWidth;
+    if(x>.72) next();
+    else if(x<.28) prev();
+  });
+})();
+</script>
+</body>
+</html>
