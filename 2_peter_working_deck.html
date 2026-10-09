@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#08090b">
+<title>It Is God Who Works in Us — 2 Peter 1</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root{
+  --bg:#08090b;
+  --fg:#f5f5f2;
+  --muted:#9a9ca3;
+  --yellow:#f4d90a;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{
+  margin:0;width:100%;height:100%;overflow:hidden;
+  background:var(--bg);color:var(--fg);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+body{touch-action:pan-y}
+.deck{width:100%;height:100%;position:relative}
+.slide{
+  position:absolute;inset:0;
+  padding:max(7vh,44px) max(7vw,34px) max(8vh,58px);
+  display:flex;flex-direction:column;justify-content:center;
+  opacity:0;visibility:hidden;
+  transform:translateX(4vw) scale(.985);
+  transition:opacity .38s ease,transform .5s cubic-bezier(.2,.75,.25,1);
+}
+.slide.active{opacity:1;visibility:visible;transform:none}
+.slide::before{
+  content:"";position:absolute;left:7vw;top:0;width:80px;height:5px;
+  background:var(--yellow);
+}
+.kicker{
+  font:700 clamp(12px,1.7vw,18px)/1 "Space Grotesk",sans-serif;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);
+  margin-bottom:clamp(24px,5vh,52px);
+}
+h1{
+  margin:0;max-width:1100px;
+  font:800 clamp(42px,6.2vw,92px)/.98 "Space Grotesk",Inter,sans-serif;
+  letter-spacing:-.045em;
+}
+.em{ text-decoration:underline; text-decoration-color:var(--yellow);
+      text-decoration-thickness:.09em;text-underline-offset:.12em; }
+.refs{
+  margin-top:clamp(28px,5vh,54px);
+  max-width:1050px;
+  font:600 clamp(15px,2vw,23px)/1.45 Inter,sans-serif;
+  color:var(--muted);
+}
+.refs span{color:var(--fg)}
+.footer{
+  position:absolute;left:7vw;right:7vw;bottom:30px;
+  display:flex;justify-content:space-between;align-items:center;
+  color:#5f626a;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+}
+.counter{color:#8a8c92}
+.hint{opacity:.75}
+.intro-quote{font-size:clamp(25px,3.7vw,54px);line-height:1.16;letter-spacing:-.035em;max-width:1150px}
+@media (orientation:portrait) and (max-width:600px){.intro-quote{font-size:clamp(23px,5.4vw,35px)}}
+.cover{justify-content:flex-end;padding-bottom:12vh}
+.cover h1{font-size:clamp(52px,9vw,130px);max-width:1000px}
+.cover .kicker{margin-bottom:24px}
+.cover .sub{margin-top:28px;color:var(--muted);font-size:clamp(15px,2vw,22px)}
+@media (orientation:portrait) and (max-width:600px){
+  .slide{padding-left:8vw;padding-right:8vw}
+  .slide::before{left:8vw}
+  .footer{left:8vw;right:8vw}
+  h1{font-size:clamp(38px,10.5vw,68px)}
+  .refs{font-size:15px}
+}
+
+/* Scripture slide: yellow actions, subtly highlighted italic objects */
+.scripture-slide{padding-top:6vh;padding-bottom:7vh}
+.scripture-text{font-family:Inter,system-ui,sans-serif;font-size:clamp(17px,2.45vw,34px);line-height:1.42;letter-spacing:-.025em;font-weight:600;max-width:1260px}
+.scripture-text strong{font-weight:900;color:var(--yellow);text-decoration:underline;text-decoration-thickness:.07em;text-underline-offset:.14em}
+.scripture-text em{font-style:italic;color:#fff;text-decoration:underline;text-decoration-color:rgba(244,217,10,.65);text-decoration-thickness:.055em;text-underline-offset:.14em}
+@media(max-width:650px){.scripture-text{font-size:clamp(14px,3.2vw,23px);line-height:1.34}}
+
+/* Section two scripture reading, scoped to preserve existing slides. */
+.section-two-reading .kicker{margin-bottom:clamp(15px,2.5vh,28px)}
+.section-two-reading .verse{max-width:1180px;font:600 clamp(17px,2.12vw,30px)/1.37 Inter,sans-serif;letter-spacing:-.024em;margin:0}
+.section-two-reading .verse p{margin:0 0 .8em}
+.section-two-reading .verb{text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:.1em;text-underline-offset:.13em;font-weight:800}
+.section-two-reading .object{font-style:italic;text-decoration:underline;text-decoration-color:rgba(244,217,10,.65);text-decoration-thickness:.055em;text-underline-offset:.12em}
+@media(max-width:700px){.section-two-reading .verse{font-size:clamp(15px,2.8vw,21px)}}
+@media(max-height:540px){.section-two-reading{padding-top:20px;padding-bottom:36px}.section-two-reading .kicker{margin-bottom:9px}.section-two-reading .verse{font-size:clamp(14px,1.85vw,23px);line-height:1.24}.section-two-reading .verse p{margin-bottom:.55em}}
+
+/* Peter introduction timeline */
+.peter-description{color:var(--fg)}
+.peter-timeline{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(12px,2vw,28px);margin-top:clamp(28px,5vh,54px);font:600 clamp(16px,2vw,26px)/1.45 Inter,sans-serif;color:var(--fg)}
+.peter-timeline strong{display:block;color:var(--yellow);font-family:"Space Grotesk",Inter,sans-serif}
+.peter-timeline .timeline-arrow{color:var(--yellow)}
+@media(max-width:600px){.peter-timeline{font-size:16px;gap:12px}}
+
+.peter-timeline strong.peter-date-emphasis{font-size:1.65em;font-weight:900;line-height:1.15;text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:.07em;text-underline-offset:.15em}
+
+.colossians-reading .verse{font-weight:400}
+.colossians-reading .verse strong{font-weight:900;color:var(--yellow)}
+
+/* Knowledge & Character source slide, scoped to retain the deck theme. */
+.knowledge-character .kicker{margin-bottom:clamp(15px,2.5vh,28px)}
+.knowledge-character h1{font:700 clamp(31px,4.6vw,64px)/1.05 "Space Grotesk",sans-serif;letter-spacing:-.045em;margin:0 0 clamp(14px,2.8vh,30px)}
+.knowledge-character .question{color:var(--muted);font-size:clamp(16px,2vw,26px);font-weight:600;line-height:1.35;max-width:1000px;margin:0 0 clamp(22px,4vh,46px)}
+.knowledge-character .theses{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,48px)}
+.knowledge-character .thesis{border-top:3px solid var(--yellow);padding-top:clamp(15px,2vh,25px)}
+.knowledge-character .label{font:700 clamp(12px,1.35vw,17px) "Space Grotesk",sans-serif;color:var(--yellow);letter-spacing:.13em;margin-bottom:clamp(12px,2vh,22px)}
+.knowledge-character .thesis h2{font:700 clamp(27px,3.6vw,49px)/1.08 "Space Grotesk",sans-serif;letter-spacing:-.04em;margin:0 0 16px}
+.knowledge-character .thesis p{font-size:clamp(15px,1.7vw,22px);line-height:1.4;color:#b8bac0;margin:0}
+.knowledge-character .takeaway{font:700 clamp(16px,2vw,26px)/1.3 "Space Grotesk",sans-serif;margin-top:clamp(25px,5vh,54px);color:var(--fg)}
+.knowledge-character .verb{text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:.1em;text-underline-offset:.13em;font-weight:800}
+.knowledge-character .takeaway .verb{font-weight:700}
+@media(max-width:700px){.knowledge-character .theses{gap:20px}.knowledge-character .thesis h2{font-size:clamp(22px,4vw,32px)}.knowledge-character .thesis p{font-size:14px}}
+@media(max-width:530px){.knowledge-character .theses{grid-template-columns:1fr;gap:16px}.knowledge-character .thesis{padding-top:9px}.knowledge-character .thesis h2{margin-bottom:6px}.knowledge-character .takeaway{margin-top:17px}}
+@media(max-height:540px){.knowledge-character{padding-top:20px;padding-bottom:36px}.knowledge-character .kicker{margin-bottom:9px}.knowledge-character h1{margin-bottom:12px}.knowledge-character .question{margin-bottom:14px}.knowledge-character .takeaway{margin-top:15px}}
+
+/* Forgotten cleansing scripture and Psalm references */
+.cleansing-reading .kicker{margin-bottom:clamp(20px,3vh,36px)}
+.cleansing-quote{max-width:1180px;font:800 clamp(28px,3.7vw,52px)/1.18 "Space Grotesk",Inter,sans-serif;letter-spacing:-.035em}
+.cleansing-quote strong{font-weight:800}
+.cleansing-quote em{font-style:italic;text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:.06em;text-underline-offset:.13em}
+.cleansing-source{margin-top:20px;color:var(--muted);font:600 clamp(14px,1.4vw,19px)/1.4 Inter,sans-serif}
+.cleansing-callouts{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px);margin-top:clamp(28px,5vh,54px)}
+.cleansing-callouts>div{border-top:3px solid var(--yellow);padding-top:clamp(16px,2vh,25px)}
+.cleansing-callouts .label{font:700 clamp(12px,1.35vw,17px)/1.2 "Space Grotesk",sans-serif;color:var(--yellow);letter-spacing:.13em;text-transform:uppercase;margin-bottom:16px}
+.cleansing-callouts p{font:600 clamp(19px,2.1vw,29px)/1.35 Inter,sans-serif;margin:0;color:var(--fg);letter-spacing:-.02em}
+@media(max-width:600px){.cleansing-quote{font-size:29px}.cleansing-callouts{grid-template-columns:1fr;gap:22px;margin-top:25px}.cleansing-callouts p{font-size:18px}.cleansing-callouts .label{margin-bottom:8px}}
+@media(max-height:540px){.cleansing-reading{padding-top:24px;padding-bottom:45px}.cleansing-reading .kicker{margin-bottom:12px}.cleansing-quote{font-size:clamp(25px,3vw,40px)}.cleansing-source{margin-top:12px}.cleansing-callouts{margin-top:22px}.cleansing-callouts p{font-size:clamp(17px,1.9vw,24px)}}
+
+/* Section three scripture emphasis */
+.section-three-reading .verse strong{font-weight:900;color:var(--yellow)}
+.section-three-reading .verse .effort-emphasis{text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:.07em;text-underline-offset:.14em}
+.section-three-reading .verse em{font-style:italic}
+
+/* Peter context and transition to point two */
+.peter-context .kicker{margin-bottom:2vh}
+.peter-context h1{font-size:clamp(38px,4.1vw,60px);line-height:1}
+.peter-experiences{display:grid;grid-template-columns:1fr 1fr 1.2fr 1.25fr;gap:2vw;margin-top:3vh}
+.peter-experiences h2{font:700 clamp(20px,2.5vw,36px)/1.1 "Space Grotesk",sans-serif;letter-spacing:-.04em;color:var(--yellow);margin:0 0 10px}
+.peter-experiences p{font:500 clamp(14px,1.4vw,20px)/1.35 Inter,sans-serif;color:var(--muted);margin:0}
+.context-reference{font:700 clamp(12px,1.2vw,17px)/1.3 "Space Grotesk",sans-serif;letter-spacing:.12em;color:var(--yellow);margin-top:4vh;text-transform:uppercase}
+.context-scripture{font:500 clamp(16px,1.65vw,24px)/1.37 Inter,sans-serif;letter-spacing:-.02em;max-width:1260px;margin-top:2vh}
+.context-scripture p{margin:0 0 .7em}
+.context-scripture strong{font-weight:900;color:var(--yellow)}
+@media(max-width:600px){.peter-context{padding-top:28px;padding-bottom:55px}.peter-experiences{grid-template-columns:1fr 1fr;gap:18px}.peter-experiences h2{font-size:22px}.context-scripture{font-size:15px}.context-reference{margin-top:22px}}
+@media(max-height:540px){.peter-context{padding-top:22px;padding-bottom:42px}.peter-context h1{font-size:36px}.peter-experiences{margin-top:15px}.context-reference{margin-top:20px}.context-scripture{font-size:clamp(14px,1.45vw,20px);line-height:1.3}}
+</style>
+</head>
+<body>
+<main class="deck" aria-label="Scripture and five-point presentation">
+  <section class="slide intro active">
+    <div class="kicker">1 John 4:9–10 · ONE THING</div>
+    <h1 class="intro-quote">God's love was revealed among us in this way: God sent his one and only Son into the world so that we might live through him.<br><br>Love consists in this: <span class="em">not that we loved God</span>, but that <span class="em">he loved us</span> and <span class="em">sent his Son</span> to be the atoning sacrifice for our sins.</h1>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">01 / 17</span></div>
+  </section>
+  <section class="slide cover">
+    <div class="kicker">2 Peter 1</div>
+    <h1>It Is God Who<br><span class="em">Works in Us.</span></h1>
+    <div class="sub">Five ways to strive in response to what God has already given.</div>
+    <div class="footer"><span>Men's Study · October 2026</span><span class="counter">02 / 17</span></div>
+  </section>
+
+  <section class="slide scripture-slide">
+    <div class="kicker">2 Peter 1:1–4</div>
+    <div class="scripture-text">Simeon Peter, a servant and an apostle of Jesus Christ: To those who have <strong>received</strong> a <em>faith</em> equal to ours <strong>through</strong> the <em>righteousness of our God and Savior Jesus Christ</em>.<br><br>May grace and peace be multiplied to you <strong>through</strong> the <em>knowledge of God and of Jesus our Lord</em>.<br><br>His divine power has <strong>given</strong> us <em>everything required for life and godliness</em> <strong>through</strong> the <em>knowledge of him who called us</em> by his own glory and goodness.<br><br>By these <strong>he has given</strong> us <em>very great and precious promises</em>, so that <strong>through</strong> <em>them</em> you may share in the divine nature, escaping the corruption that is in the world because of evil desire.</div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">03 / 17</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">01</div>
+    <h1>Strive to see <span class="em">EVERYTHING</span> you have as something God has <span class="em">GIVEN</span> you.</h1>
+    <div class="refs"><span>1 Chr 29:14 · Acts 17:25 · Deut 8:18 · Ps 16:2 · James 1:17 · Rom 11:36</span></div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">04 / 17</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">2 Peter</div>
+    <h1>Who is this <span class="em">Peter dude?</span></h1>
+    <div class="refs peter-description">A fisherman in the 1st-century ANE who wrote a few letters.</div>
+    <div class="peter-timeline"><span>1 Peter <strong>AD 62</strong></span><span class="timeline-arrow">→</span><span>Great Fire of Rome <strong>AD 64</strong></span><span class="timeline-arrow">→</span><span>2 Peter <strong class="peter-date-emphasis">AD 67</strong></span></div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">05 / 17</span></div>
+  </section>
+
+  <section class="slide peter-context">
+    <div class="kicker">Peter · With Jesus</div>
+    <h1>He…</h1>
+    <div class="peter-experiences">
+      <div><h2>READ.</h2><p>The Hebrew scriptures.</p></div>
+      <div><h2>WALKED.</h2><p>With Jesus.</p></div>
+      <div><h2>WITNESSED.</h2><p>His actions.</p></div>
+      <div><h2>WONDERED.</h2><p>About misunderstandings.</p></div>
+    </div>
+    <div class="context-reference">WONDERED · Mark 8:31–33 CSB</div>
+    <div class="context-scripture">
+      <p>Then he began to teach them that it was necessary for the Son of Man to suffer many things and be rejected by the elders, chief priests, and scribes, be killed, and rise after three days.</p>
+      <p>He spoke openly about this. Peter took him aside and began to rebuke him. But turning around and looking at his disciples, he rebuked Peter and said, &quot;Get behind me, Satan! <strong>You are not thinking about God's concerns but human concerns.</strong>&quot;</p>
+    </div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">06 / 17</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">02</div>
+    <h1>Strive to see <span class="em">ALL THINGS</span> through the <span class="em">VIEW</span> of God.</h1>
+    <div class="refs"><span>Mark 8:29–33 · Isa 55:8–9 · Prov 3:5–6 · 2 Cor 4:17–18 · Rom 12:2</span></div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">07 / 17</span></div>
+  </section>
+
+  <section class="slide section-two-reading section-three-reading"><div class="kicker">SECTION TWO · 2 Peter 1:5–9 CSB</div><div class="verse"><p><em>For this very reason</em>, <strong class="effort-emphasis">make every effort</strong> to <strong>supplement your faith</strong> with goodness, goodness with knowledge, knowledge with self-control, self-control with endurance, endurance with godliness, godliness with brotherly affection, and brotherly affection with love.</p><p>For if you possess these qualities in increasing measure, they will keep you from being useless or unfruitful in the knowledge of our Lord Jesus Christ.</p><p>The <em>person who lacks these things</em> is blind and shortsighted and <strong>has forgotten the cleansing from his past sins</strong>.</p></div><div class="footer"><span>It Is God Who Works in Us</span><span class="counter">08 / 17</span></div></section>
+
+  <section class="slide">
+    <div class="kicker">03</div>
+    <h1>Strive to <span class="em">SUPPLEMENT</span> your <span class="em">FAITH</span> with <span class="em">CHRIST-LIKE CHARACTER.</span></h1>
+    <div class="refs"><span>Rom 1:17 · Phil 4:8 · Col 1:9–10 · Prov 16:32 · Col 5:22–23</span></div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">09 / 17</span></div>
+  </section>
+
+  <section class="slide section-two-reading colossians-reading">
+    <div class="kicker">Echoes Paul · Colossians 3:12–14 CSB</div>
+    <div class="verse">
+      <p>Therefore, as God's chosen ones, holy and dearly loved, put on <strong>compassion, kindness, humility, gentleness, and patience</strong>, bearing with one another and forgiving one another if anyone has a grievance against another.</p>
+      <p>Just as the Lord has forgiven you, so you are also to forgive.</p>
+      <p>Above all, put on <strong>love</strong>, which is the perfect bond of unity.</p>
+    </div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">10 / 17</span></div>
+  </section>
+
+  <section class="slide knowledge-character"><div class="kicker">Knowledge of Christ · Dive Deeper</div><h1>Knowledge &amp; Character</h1><p class="question">Does Christ-like character deepen our knowledge of Christ—or does knowing Christ produce Christ-like character?</p><div class="theses"><div class="thesis"><div class="label">THESIS 01</div><h2><span class="verb">VIRTUE</span> → KNOWLEDGE</h2><p>Practicing Christ-like virtues cultivates a deeper, more fruitful knowledge of Christ.</p></div><div class="thesis"><div class="label">THESIS 02</div><h2><span class="verb">KNOWLEDGE</span> → VIRTUE</h2><p>Knowing Christ is the root and setting from which Christ-like character grows.</p></div></div><div class="takeaway">Knowing Christ shapes how we <span class="verb">LIVE</span>.<br>How we live reflects and deepens our <span class="verb">KNOWLEDGE</span> of Him.</div><div class="footer"><span>Two complementary perspectives · 2 Peter 1:3–9</span><span class="counter">11 / 17</span></div></section>
+
+  <section class="slide cleansing-reading">
+    <div class="kicker">Forgotten Cleansing · Dive Deeper</div>
+    <div class="cleansing-quote"><strong>The <em>person who lacks these things</em> is blind and shortsighted and has forgotten the cleansing from his past sins.</strong></div>
+    <div class="cleansing-source">2 Peter 1:9 CSB</div>
+    <div class="cleansing-callouts">
+      <div><div class="label">Psalm 51:2 CSB</div><p>Completely wash away my guilt and cleanse me from my sin.</p></div>
+      <div><div class="label">Psalm 32:1 CSB</div><p>How joyful is the one whose transgression is forgiven, whose sin is covered!</p></div>
+    </div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">12 / 17</span></div>
+  </section>
+
+  <section class="slide section-two-reading section-three-reading">
+    <div class="kicker">SECTION THREE · 2 Peter 1:10–11 CSB</div>
+    <div class="verse">
+      <p>Therefore, brothers and sisters, <strong class="effort-emphasis">make every effort</strong> to <strong>confirm your calling and election</strong>, because if you <em>do these things you will never stumble</em>.</p>
+      <p>For in this way, entry into the eternal kingdom of our Lord and Savior Jesus Christ will be richly provided for you.</p>
+    </div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">13 / 17</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">04</div>
+    <h1>Strive to <span class="em">LIVE</span> in a way that <span class="em">DEMONSTRATES</span> the <span class="em">REALITY</span> of your faith.</h1>
+    <div class="refs"><span>1 Sam 16:7 · Deut 8:2 · Matt 7:16–20 · 1 John 2:3–6</span></div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">14 / 17</span></div>
+  </section>
+
+  <section class="slide section-two-reading section-three-reading">
+    <div class="kicker">SECTION FOUR · 2 Peter 1:12–15 CSB</div>
+    <div class="verse">
+      <p>Therefore I will <strong>always remind you about these things</strong>, <strong class="effort-emphasis">even though you know them</strong> and are <strong class="effort-emphasis">established in the truth you now have</strong>.</p>
+      <p>I think it is right, as long as I am in this bodily tent, to wake you up with a reminder, since I know that I will soon lay aside my tent, as our Lord Jesus Christ has indeed made clear to me.</p>
+      <p>And I will also <strong class="effort-emphasis">make every effort</strong> <em>so that you are able to recall these things</em> at any time after my departure.</p>
+    </div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">15 / 17</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">05</div>
+    <h1>Strive <span class="em">NOT</span> to let what you <span class="em">KNOW</span> so well become what you <span class="em">HEAR</span> or <span class="em">READ</span> so little.</h1>
+    <div class="refs"><span>Deut 6:6–7 · Ps 78:5–7 · Phil 3:1 · 1 John 2:7</span></div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">16 / 17</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">06</div>
+    <h1><span class="em">Read your Bible</span></h1>
+    <div class="refs"><span>Ps 1 · Nehemiah 13:1-3 · 2 Chr 34:14-21 · Luke 24:44-49 · 4:16</span></div>
+    <div class="footer"><span>It Is God Who Works in Us</span><span class="counter">17 / 17</span></div>
+  </section>
+</main>
+
+<script>
+(() => {
+  const slides=[...document.querySelectorAll('.slide')];
+  let index=0, startX=0, startY=0;
+
+  function show(n){
+    index=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,i)=>s.classList.toggle('active',i===index));
+  }
+  function next(){show(index+1)}
+  function prev(){show(index-1)}
+
+  window.addEventListener('keydown',e=>{
+    if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next()}
+    if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev()}
+    if(e.key==='Home'){e.preventDefault();show(0)}
+    if(e.key==='End'){e.preventDefault();show(slides.length-1)}
+  });
+
+  document.addEventListener('touchstart',e=>{
+    const t=e.changedTouches[0]; startX=t.clientX; startY=t.clientY;
+  },{passive:true});
+  document.addEventListener('touchend',e=>{
+    const t=e.changedTouches[0], dx=t.clientX-startX, dy=t.clientY-startY;
+    if(Math.abs(dx)>55 && Math.abs(dx)>Math.abs(dy)*1.2){
+      dx<0?next():prev();
+    }
+  },{passive:true});
+
+  // Tap left/right edges for iPad-friendly navigation.
+  document.addEventListener('click',e=>{
+    if(e.target.closest('a,button')) return;
+    const x=e.clientX/window.innerWidth;
+    if(x>.72) next();
+    else if(x<.28) prev();
+  });
+})();
+</script>
+</body>
+</html>
